@@ -4,8 +4,8 @@ import { Button, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap'
 import { getMultiSelected, repeat } from '../../../utils';
 import { isCategoriesValid, isNameValid, isExpirationDateValid } from './validators';
 
-const ProductForm = (props) => {
-    const { product = {} } = props;
+export default function ProductForm(props) {
+    const { product = {}, onSave } = props;
     const [showValidation, setShowValidation] = useState(false);
     const [name, setName] = useState(product.name || '');
     const [brand, setBrand] = useState(product.brand || '');
@@ -14,7 +14,7 @@ const ProductForm = (props) => {
     const [itemsInStock, setItemsInStock] = useState(product.itemsInStock || 0);
     const [receiptDate, setReceiptDate] = useState(product.receiptDate || '');
     const [expirationDate, setExpirationDate] = useState(product.expirationDate || '');
-    const [featured, setFeatured] = useState(product.featured);
+    const [featured, setFeatured] = useState(product.featured || false);
 
     const formIsValid =
         !!(
@@ -31,7 +31,7 @@ const ProductForm = (props) => {
             return;
         }
 
-        props.onSave({
+        onSave({
             name,
             brand,
             rating,
@@ -136,12 +136,10 @@ const ProductForm = (props) => {
             <Button>Submit</Button>
         </Form>
     );
-}
+};
 
 ProductForm.propTypes = {
     product: PropTypes.object,
     categories: PropTypes.array.isRequired,
     onSave: PropTypes.func.isRequired,
 };
-
-export default ProductForm;
