@@ -1,38 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Changes:
+- Add and Update Product now working
+- If not specifically checked, Featured is checked automatically if Rating > 8
+- If Expiration Date specified, checking if it’s at least 30 days in the future
+- Form validation shown only after pressing Submit, not allowing submission if validation errors present
+- Wrote missing unit tests for products and categories actions and reducers, as well as the form validators
+- Refactored class components into functional components
+- Fixed bug where the id of a new product is a string so it can’t be viewed or edited
+- Fixed bug where Featured checkbox was throwing a warning
+- Fixed bug with application not starting, resolved with —openssl-legacy-provider
+- Fixed error in console regarding process not being defined because of outdated react-scripts package
+- Fixed all warnings in the console
+- Improvements in the code style, syntax and naming conventions
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Suggested refactoring:
+- Re-arrange Redux code following the ducks pattern: actions, action creators and reducers for each domain (products, categories) in a single file
+- Implement Redux Toolkit in order to reduce Redux boilerplate
+- Try migrating to newer dependency versions as some are outdated and have issues
+- Can restructure components folder structure, for instance move ProductForm and validators, which are shared components, out of the Update folder
