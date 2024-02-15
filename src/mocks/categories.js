@@ -1,4 +1,4 @@
-const categories = [
+export const categories = [
   {
     id: 1,
     name: 'TV & Home Cinema',

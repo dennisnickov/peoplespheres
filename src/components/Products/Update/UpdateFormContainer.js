@@ -5,6 +5,7 @@ import { getProductById } from '../../../reducers/products';
 import ProductForm from './ProductForm';
 import { Link } from 'react-router-dom';
 import { updateProductForm } from '../../../actions/products';
+import { isFeatured } from '../../../reducers/products';
 
 export default function UpdateFormContainer({ productId }) {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function UpdateFormContainer({ productId }) {
             <Link to='/'>Home</Link>
             <ProductForm
                 onSave={(data) => dispatch(updateProductForm({
-                    ...data, id: productId, featured: data.featured || data.rating > 8
+                    ...data, id: productId, featured: isFeatured(data)
                 }))}
                 product={product}
                 categories={categories}

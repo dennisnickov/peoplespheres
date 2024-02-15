@@ -4,6 +4,6 @@ class CategoryApi {
   getCategories = () => {
     return categories;
   }
-}
+};
 
 export const categoryApi = new CategoryApi();

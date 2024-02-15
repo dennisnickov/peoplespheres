@@ -25,7 +25,7 @@ export const createProduct = (data) => ({
   data,
 });
 
-const receiveProducts = (json) => ({
+export const receiveProducts = (json) => ({
   type: RECEIVE_PRODUCTS,
   products: json.map(product => product),
 });
@@ -39,9 +39,9 @@ export const fetchProducts = () => dispatch => {
 export const updateProductForm = (data) => (dispatch, getState, { history }) => {
   dispatch(updateProduct(data));
   history.push('/');
-}
+};
 
 export const createProductForm = (data) => (dispatch, getState, { history }) => {
   dispatch(createProduct(data));
   history.push('/');
-}
+};

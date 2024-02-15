@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductForm from '../Update/ProductForm';
 import { createProductForm } from '../../../actions/products';
+import { isFeatured } from '../../../reducers/products';
 
 export default function AddFormContainer() {
     const categories = useSelector(state => state.categories);
@@ -13,7 +14,7 @@ export default function AddFormContainer() {
             <Link to='/'>Home</Link>
             <ProductForm
                 onSave={(data) => dispatch(createProductForm({
-                    ...data, featured: data.featured || data.rating > 8
+                    ...data, featured: isFeatured(data)
                 }))}
                 categories={categories}
             />

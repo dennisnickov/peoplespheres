@@ -1,9 +1,9 @@
 import products from '../mocks/products';
 
-class ProductApi {
+export class ProductApi {
   getProducts = () => {
     return products;
   }
-}
+};
 
 export const productApi = new ProductApi();

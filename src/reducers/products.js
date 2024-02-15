@@ -3,6 +3,7 @@ import { generateId } from '../utils';
 import moment from 'moment';
 
 export const isFeatured = ({ rating, featured }) => rating > 8 || featured;
+export const getProductById = ({ products }, productId) => products.find(({ id }) => id === productId);
 
 export function products(state = [], action) {
   switch (action.type) {
@@ -33,8 +34,4 @@ export function products(state = [], action) {
     default:
       return state;
   }
-}
-
-export function getProductById({ products }, productId) {
-  return products.find(({ id }) => id === productId);
-}
+};

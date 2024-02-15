@@ -9,13 +9,10 @@ export function categories(state = [], action) {
     default:
       return state;
   }
-}
+};
 
-export function getCategoriesById(state) {
-  return state.categories.reduce((acc, category) => {
-    return {
-      ...acc,
-      [category.id]: category
-    }
-  }, {})
-}
+export const getCategoriesById = (state) =>
+  state.categories.reduce((acc, category) => ({
+    ...acc,
+    [category.id]: category
+  }), {});

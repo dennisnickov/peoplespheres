@@ -6,7 +6,7 @@ export const isNameValid = (value) => {
 
 export const isCategoriesValid = (value) => {
 	return value.length > 0 && value.length <= 5;
-}
+};
 
 export const isExpirationDateValid = (value) => {
 	if (!value) return true;
@@ -15,4 +15,4 @@ export const isExpirationDateValid = (value) => {
 	const timestampSelected = new Date(value).getTime();
 
 	return timestampSelected > timestampMinimum;
-}
+};
