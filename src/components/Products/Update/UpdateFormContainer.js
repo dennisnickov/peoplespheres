@@ -28,7 +28,7 @@ export default function UpdateFormContainer({ productId }) {
             />
         </>
     );
-}
+};
 
 UpdateFormContainer.propTypes = {
     productId: PropTypes.number.isRequired,

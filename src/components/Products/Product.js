@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const shortDateFormat = 'MM/DD/YYYY';
 const longDateFormat = 'MM/DD/YYYY hh:mm a';
 
-const Product = ({ product, onDelete }) => {
+export default function Product({ product, onDelete }) {
   const receiptDate = product.receiptDate ? moment(product.receiptDate).format(shortDateFormat) : '-';
   const expirationDate = product.expirationDate ? moment(product.expirationDate).format(shortDateFormat) : '-';
   const createdAt = product.createdAt ? moment(product.createdAt).format(longDateFormat) : '-';
@@ -47,5 +47,3 @@ Product.propTypes = {
   product: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
-
-export default Product;
