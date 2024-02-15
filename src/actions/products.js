@@ -10,14 +10,13 @@ const requestProducts = () => ({
   type: REQUEST_PRODUCTS,
 });
 
-export const deleteProduct = (id) => ({
+export const deleteProduct = (productId) => ({
   type: DELETE_PRODUCT,
-  productId: id,
+  productId,
 });
 
-export const updateProduct = (id, data) => ({
+export const updateProduct = (data) => ({
   type: UPDATE_PRODUCT,
-  productId: id,
   data,
 });
 
@@ -37,12 +36,12 @@ export const fetchProducts = () => dispatch => {
   dispatch(receiveProducts(json));
 };
 
-export const updateProductForm = (id, data) => (dispatch, getState, {history}) => {
-  dispatch(updateProduct(id, data));
+export const updateProductForm = (data) => (dispatch, getState, { history }) => {
+  dispatch(updateProduct(data));
   history.push('/');
 }
 
-export const createProductForm = (data) => (dispatch, getState, {history}) => {
+export const createProductForm = (data) => (dispatch, getState, { history }) => {
   dispatch(createProduct(data));
   history.push('/');
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Card, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Button} from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import moment from 'moment'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const shortDateFormat = 'MM/DD/YYYY';
 const longDateFormat = 'MM/DD/YYYY hh:mm a';
 
 const Product = ({ product, onDelete }) => {
-  const receiptDate =  product.receiptDate ? moment(product.receiptDate).format(shortDateFormat) : '-';
-  const expirationDate =  product.expirationDate ? moment(product.expirationDate).format(shortDateFormat) : '-';
+  const receiptDate = product.receiptDate ? moment(product.receiptDate).format(shortDateFormat) : '-';
+  const expirationDate = product.expirationDate ? moment(product.expirationDate).format(shortDateFormat) : '-';
   const createdAt = product.createdAt ? moment(product.createdAt).format(longDateFormat) : '-';
 
   return (

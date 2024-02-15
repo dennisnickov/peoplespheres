@@ -1,8 +1,8 @@
 import * as productsActions from '../actions/products';
-import {generateId} from '../utils';
+import { generateId } from '../utils';
 import moment from 'moment';
 
-export const isFeatured = ({rating, featured}) => rating > 8 || featured;
+export const isFeatured = ({ rating, featured }) => rating > 8 || featured;
 
 export function products(state = [], action) {
   switch (action.type) {
@@ -14,7 +14,7 @@ export function products(state = [], action) {
       return state.filter((item) => item.id !== action.productId);
     case productsActions.UPDATE_PRODUCT:
       return state.map((item) => {
-        if (item.id === action.productId) {
+        if (item.id === action.data.id) {
           return {
             ...item,
             ...action.data,
@@ -35,6 +35,6 @@ export function products(state = [], action) {
   }
 }
 
-export function getProductById({products}, productId) {
-  return products.find(({id}) => id === productId);
+export function getProductById({ products }, productId) {
+  return products.find(({ id }) => id === productId);
 }

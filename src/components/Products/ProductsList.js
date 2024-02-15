@@ -4,7 +4,7 @@ import Product from './Product';
 import { Container, Row, Col } from 'reactstrap'
 import { chunk } from 'lodash'
 
-const ProductList = ({ products, onDelete }) => {
+const ProductsList = ({ products, onDelete }) => {
   const productsGroups = chunk(products, 3)
 
   return (
@@ -22,9 +22,9 @@ const ProductList = ({ products, onDelete }) => {
   );
 };
 
-ProductList.propTypes = {
+ProductsList.propTypes = {
   products: PropTypes.array.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
-export default ProductList;
+export default ProductsList;
