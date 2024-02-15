@@ -15,5 +15,5 @@ const HOUR = 60 * MIN;
 export const DAY = 24 * HOUR;
 
 export function generateId() {
-    return Date.now().toString(10);
+    return new Date().getTime();
 }
