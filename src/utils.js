@@ -1,7 +1,7 @@
 export const repeat = (n) => Array.from(Array(n).keys());
 
 export function getMultiSelected(target) {
-    return Array.from(target.options).reduce((acc, {selected, value}) => {
+    return Array.from(target.options).reduce((acc, { selected, value }) => {
         if (selected) {
             acc.push(value)
         }
@@ -12,11 +12,7 @@ export function getMultiSelected(target) {
 const SEC = 1000;
 const MIN = 60 * SEC;
 const HOUR = 60 * MIN;
-const DAY = 24 * HOUR;
-
-export function timestampToDays(ms) {
-    return ms / DAY;
-}
+export const DAY = 24 * HOUR;
 
 export function generateId() {
     return Date.now().toString(10);

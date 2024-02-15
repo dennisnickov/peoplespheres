@@ -12,7 +12,9 @@ export default function AddFormContainer() {
         <>
             <Link to='/'>Home</Link>
             <ProductForm
-                onSave={(data) => dispatch(createProductForm(data))}
+                onSave={(data) => dispatch(createProductForm({
+                    ...data, featured: data.featured || data.rating > 8
+                }))}
                 categories={categories}
             />
         </>

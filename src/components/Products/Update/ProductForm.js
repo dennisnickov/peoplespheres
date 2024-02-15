@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { getMultiSelected, repeat } from '../../../utils';
-import { isCategoriesValid, isNameValid } from './validators';
+import { isCategoriesValid, isNameValid, isExpirationDateValid } from './validators';
 
 const ProductForm = (props) => {
     const { product = {} } = props;
+    const [showValidation, setShowValidation] = useState(false);
     const [name, setName] = useState(product.name || '');
     const [brand, setBrand] = useState(product.brand || '');
     const [rating, setRating] = useState(product.rating || 0);
@@ -15,8 +16,21 @@ const ProductForm = (props) => {
     const [expirationDate, setExpirationDate] = useState(product.expirationDate || '');
     const [featured, setFeatured] = useState(product.featured);
 
+    const formIsValid =
+        !!(
+            isNameValid(name) &&
+            isCategoriesValid(categories) &&
+            isExpirationDateValid(expirationDate)
+        );
+
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (!formIsValid) {
+            setShowValidation(true);
+            return;
+        }
+
         props.onSave({
             name,
             brand,
@@ -34,7 +48,7 @@ const ProductForm = (props) => {
             <FormGroup>
                 <Label for='name'>Name</Label>
                 <Input
-                    invalid={!isNameValid(name)}
+                    invalid={showValidation && !isNameValid(name)}
                     type='text'
                     name='name'
                     id='name'
@@ -72,7 +86,7 @@ const ProductForm = (props) => {
             <FormGroup>
                 <Label for="categories">Categories</Label>
                 <Input
-                    invalid={!isCategoriesValid(categories)}
+                    invalid={showValidation && !isCategoriesValid(categories)}
                     type="select"
                     name="categories"
                     id="categories"
@@ -95,6 +109,7 @@ const ProductForm = (props) => {
             <FormGroup>
                 <Label for="expirationDate">Expiration date</Label>
                 <Input
+                    invalid={showValidation && !isExpirationDateValid(expirationDate)}
                     type="date"
                     name="expirationDate"
                     id="expirationDate"

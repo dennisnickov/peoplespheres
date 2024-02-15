@@ -19,7 +19,9 @@ export default function UpdateFormContainer({ productId }) {
         <>
             <Link to='/'>Home</Link>
             <ProductForm
-                onSave={(data) => dispatch(updateProductForm({ id: productId, ...data }))}
+                onSave={(data) => dispatch(updateProductForm({
+                    ...data, id: productId, featured: data.featured || data.rating > 8
+                }))}
                 product={product}
                 categories={categories}
             />
